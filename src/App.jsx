@@ -6,17 +6,25 @@ import Batsman from './Batsman'
 import Counter from './Counter'
 import Users from './Users'
 import Friends from './Friends'
+import Posts from './Posts'
+import Players from './Players'
 
-function App() {
+  // const fetchUsers = fetch('https://jsonplaceholder.typicode.com/users').then(res => res.json())
 
-  const fetchUsers = fetch('https://jsonplaceholder.typicode.com/users').then(res => res.json())
+  // const fetchFriends = async () => {
+  //   const response = await fetch('https://jsonplaceholder.typicode.com/users');
+  //   return response.json();
+  // }
 
-  const fetchFriends = async()=>{
-    const response = await fetch('https://jsonplaceholder.typicode.com/users');
-    return response.json();
+
+  const fetchPosts = async ()=>{
+    const res =await fetch('https://jsonplaceholder.typicode.com/posts');
+    return res.json();
   }
 
-  const friendsPromise = fetchFriends();
+function App() {
+  
+  // const friendsPromise = fetchFriends();
 
   function handleClick() {
     alert('I am clicked 1')
@@ -33,13 +41,20 @@ function App() {
   return (
     <>
       <h3>Vite + React</h3>
-      <Suspense fallback ={<h3>Loading data...</h3>}>
+
+      <Players></Players>
+
+      <Suspense fallback ={<h3>Loading posts...</h3>}>
+        <Posts fetchPosts = {fetchPosts()}></Posts>
+      </Suspense>
+
+      {/* <Suspense fallback ={<h3>Loading data...</h3>}>
         <Friends friendsPromise = {friendsPromise}></Friends>
       </Suspense>
 
       <Suspense fallback={<h3>loading...</h3>} >
         <Users fetchUsers={fetchUsers}></Users>
-      </Suspense>
+      </Suspense> */}
       <Batsman></Batsman>
       {/* <Baller></Baller> */}
       <Counter></Counter>
