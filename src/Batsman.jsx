@@ -24,6 +24,7 @@ export default function Batsman() {
         setRuns(newRuns);
     }
 
+
     const [balls, setBalls] = useState(0);
     const [overs, setOvers] = useState(0);
     function handleRightBall() {
@@ -54,8 +55,14 @@ export default function Batsman() {
                 runs >= 50 && <h3> Your score : 50</h3>
             }
             <h1>Score: {runs} </h1>
+            <div style={{
+                display: 'flex',
+                gap: '50px',
+                justifyContent : 'center'
+            }}>
             <p>Six: {sixes}  </p> 
             <p>  Four: {fours}</p>
+            </div>
             <button onClick={handleSingle}>Single</button>
             <button onClick={handleFour}>Four</button>
             <button onClick={handleSix}>Six</button>
